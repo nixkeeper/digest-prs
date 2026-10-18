@@ -31,7 +31,16 @@ NODE = {
             {"state": "COMMENTED", "author": {"login": "carol"}},
         ]
     },
-    "commits": {"nodes": [{"commit": {"statusCheckRollup": {"state": "SUCCESS"}}}]},
+    "commits": {
+        "nodes": [
+            {
+                "commit": {
+                    "statusCheckRollup": {"state": "PENDING"},
+                    "status": {"context": {"state": "SUCCESS"}},
+                }
+            }
+        ]
+    },
 }
 
 
@@ -52,9 +61,10 @@ class GraphQL(unittest.TestCase):
     def test_a_pr(self):
         p = github.pr(NODE)
         self.assertEqual(
-            (p["n"], p["author"], p["approvedBy"], p["ci"], p["files"]),
-            (7, "r-ryantm", ["bob"], "SUCCESS", ["pkgs/by-name/fo/foo/package.nix"]),
+            (p["n"], p["author"], p["approvedBy"], p["ci"], p["noPRFailures"]),
+            (7, "r-ryantm", ["bob"], "PENDING", "SUCCESS"),
         )
+        self.assertEqual(p["files"], ["pkgs/by-name/fo/foo/package.nix"])
 
     def test_every_page(self):
         second = {**NODE, "number": 8, "author": None, "commits": {"nodes": []}}
@@ -62,7 +72,10 @@ class GraphQL(unittest.TestCase):
         with mock.patch.object(fetch, "graphql", side_effect=answers) as asked:
             prs, total = github.open_prs("token")
         self.assertEqual([p["n"] for p in prs], [7, 8])
-        self.assertEqual((prs[1]["author"], prs[1]["ci"]), ("ghost", None))
+        self.assertEqual(
+            (prs[1]["author"], prs[1]["ci"], prs[1]["noPRFailures"]),
+            ("ghost", None, None),
+        )
         self.assertEqual(total, 2)
         self.assertEqual(asked.call_args_list[1].args[1]["cursor"], "c")
 

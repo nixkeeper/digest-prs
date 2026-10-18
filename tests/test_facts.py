@@ -130,6 +130,11 @@ class MergeBot(unittest.TestCase):
         self.assertIsNone(facts.merge_bot(staging, True, ["foo"], INDEX))
         red = {**bot, "ci": "FAILURE"}
         self.assertFalse(facts.merge_bot(red, True, ["foo"], INDEX)["ready"])
+        # nixpkgs CI's verdict, not every check's: ofborg queued for weeks.
+        queued = {**bot, "ci": "PENDING", "noPRFailures": "SUCCESS"}
+        self.assertTrue(facts.merge_bot(queued, True, ["foo"], INDEX)["ready"])
+        failing = {**bot, "ci": "SUCCESS", "noPRFailures": "FAILURE"}
+        self.assertFalse(facts.merge_bot(failing, True, ["foo"], INDEX)["ready"])
 
 
 class Analyse(unittest.TestCase):
