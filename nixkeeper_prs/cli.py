@@ -63,6 +63,7 @@ RAW = (
     "review",
     "approvedBy",
     "ci",
+    "noPRFailures",
 )
 
 

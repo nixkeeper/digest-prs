@@ -149,7 +149,9 @@ def merge_bot(pr, only_by_name, packages, index):
     touches). nixpkgs' CI says so with its label (MERGE_BOT_LABEL: it also
     counts committers' PRs and approvals); without it, as far as the
     digest can tell: by-name only, into a development branch, opened by
-    r-ryantm, no changes requested. {"ready": CI green, "maintainers":
+    r-ryantm, no changes requested. {"ready": CI green (nixpkgs CI's own
+    "no PR failures" status, as the merge bot reads it; every check's state
+    while a PR has no such status yet), "maintainers":
     [...], "label": True when the label says so} or None."""
     labelled = MERGE_BOT_LABEL in pr["labels"]
     if pr["draft"] or (not labelled and not only_by_name):
@@ -164,7 +166,8 @@ def merge_bot(pr, only_by_name, packages, index):
     maintainers = sorted(set.intersection(*each)) if each else []
     if not maintainers and not labelled:
         return None
-    found = {"ready": pr["ci"] == "SUCCESS", "maintainers": maintainers}
+    verdict = pr.get("noPRFailures") or pr["ci"]
+    found = {"ready": verdict == "SUCCESS", "maintainers": maintainers}
     if labelled:
         found["label"] = True
     return found

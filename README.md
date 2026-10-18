@@ -18,7 +18,10 @@ On the `data` branch:
   every open PR (`prs`): its number, title, author, draft, dates, base
   branch, head commit, lines added and removed, `changedFiles` and
   `files` (the first 100), labels, `mergeable` (`CONFLICTING`...), `review` (GitHub's
-  review decision), `approvedBy`, `ci` (its checks' combined state); and
+  review decision), `approvedBy`, `ci` (its checks' combined state, which
+  ofborg's checks, often queued for weeks, keep `PENDING`), `noPRFailures`
+  (nixpkgs CI's own verdict, the commit status `no PR failures`, as the
+  merge bot reads it); and
   what the digest makes of it:
   - `buckets`: `update`, `init`, `drop` (by its title, nixpkgs'
     conventions; `drop` only when it removes the package itself: "foo:
@@ -55,7 +58,8 @@ On the `data` branch:
     committer, so it also counts committers' PRs and approvals; `label`:
     true), or, without the label, r-ryantm's PRs touching only
     `pkgs/by-name`, into a development branch, no changes requested;
-    `ready` (CI green) and the `maintainers` of every package it touches
+    `ready` (CI green: `noPRFailures`, else `ci` while a PR has no such
+    status yet) and the `maintainers` of every package it touches
   - `diff`: the fingerprint of its diff (blob ids and hunk positions left
     out: the same change made on another base is the same)
   - `diffFacts`, read from its diff (`nixkeeper_prs/diffs.py`; a reading

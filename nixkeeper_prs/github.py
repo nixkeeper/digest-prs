@@ -32,7 +32,10 @@ FIELDS = """
   latestOpinionatedReviews(first: 20) {
     nodes { state author { login } }
   }
-  commits(last: 1) { nodes { commit { statusCheckRollup { state } } } }
+  commits(last: 1) { nodes { commit {
+    statusCheckRollup { state }
+    status { context(name: "no PR failures") { state } }
+  } } }
 """
 QUERY = """
 query($cursor: String, $page: Int!) {
@@ -91,6 +94,14 @@ def pr(node):
         ),
         # SUCCESS, FAILURE, ERROR, PENDING, EXPECTED, or None (no checks).
         "ci": (commit.get("statusCheckRollup") or {}).get("state"),
+        # nixpkgs CI's own verdict, the commit status "no PR failures": what
+        # the merge bot goes by (nixpkgs' ci/README.md), unlike "ci", which
+        # every check sways (ofborg's, often queued for weeks: 526 eligible
+        # PRs "pending" on 2026-10-18, all with this one passed). SUCCESS,
+        # PENDING, FAILURE, ERROR, or None (not reported yet).
+        "noPRFailures": (
+            ((commit.get("status") or {}).get("context") or {}).get("state")
+        ),
     }
 
 
