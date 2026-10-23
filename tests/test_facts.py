@@ -69,6 +69,17 @@ class UpdateState(unittest.TestCase):
         self.assertIsNone(facts.update_state("1.0", "1.1", "1.0"))  # still the update
         self.assertEqual(facts.update_state("1.0", "1.1", "1.1"), "superseded")
         self.assertEqual(facts.update_state("1.0", "1.1", "1.2"), "superseded")
+        # A snapshot renamed, not moved (gerbil-unstable, 2026-10-23): the
+        # PR's newer snapshot still stands; one at its date or later is
+        # superseded, one in between overtaken.
+        frm, to = "unstable-2023-12-06", "unstable-2025-05-13"
+        self.assertIsNone(facts.update_state(frm, to, "0.18.1-unstable-2023-12-06"))
+        self.assertEqual(
+            facts.update_state(frm, to, "0.18.1-unstable-2025-06-01"), "superseded"
+        )
+        self.assertEqual(
+            facts.update_state(frm, to, "0.18.1-unstable-2024-08-01"), "overtaken"
+        )
         self.assertEqual(facts.update_state("1.0", "1.5", "1.2"), "overtaken")
         # Backwards by Nix's order: a downgrade, or a snapshot to a release.
         self.assertEqual(facts.update_state("1.0", "0.9", "1.0"), "downgrade")
