@@ -40,6 +40,21 @@ DROP = re.compile(
 DIGIT = re.compile(r"\d")
 # A snapshot's version (nixpkgs' "0.1.0-unstable-2024-09-01", or a date).
 SNAPSHOT = re.compile(r"unstable|\d{4}-\d{2}-\d{2}")
+# A snapshot's date (0.18.1-unstable-2023-12-06).
+SNAPSHOT_DATE = re.compile(r"(\d{4}-\d{2}-\d{2})")
+
+
+def _newer(a, b):
+    """Whether a is newer than b: by their dates when both are snapshots
+    (nixpkgs renames a snapshot, unstable-2023-12-06 to
+    0.18.1-unstable-2023-12-06, without moving it: the PR's
+    unstable-2025-05-13 is still newer), else by nixkeeper's order."""
+    da, db = SNAPSHOT_DATE.search(a or ""), SNAPSHOT_DATE.search(b or "")
+    if da and db:
+        return da[1] > db[1]
+    return is_newer(a, b)
+
+
 # How small a change is "tiny": lines added and removed, and files.
 TINY_LINES = 10
 TINY_FILES = 2
@@ -109,8 +124,9 @@ def update_state(frm, to, now):
     Nix, older for libversion, which reads the suffix as a pre-release
     (1.1.0 -> 1.1.0.dev0, 3.1 -> 3.1_p1): worth a look. Against what nixpkgs
     has now (now: master's version, else the channel's), by nixkeeper's
-    order: "superseded" (nixpkgs moved past frm and has to, or newer: close
-    it), "overtaken" (moved past frm, not up to to: rebase). Else None."""
+    order (snapshots by their dates: _newer): "superseded" (nixpkgs moved
+    past frm and has to, or newer: close it), "overtaken" (moved past frm,
+    not up to to: rebase). Else None."""
     if nixversions.compare(to, frm) < 0:
         if SNAPSHOT.search(frm) and not SNAPSHOT.search(to):
             return "snapshotToRelease"
@@ -119,9 +135,9 @@ def update_state(frm, to, now):
         return "preRelease"
     if not now or now == frm:
         return None
-    if not is_newer(to, now):
+    if not _newer(to, now):
         return "superseded"
-    if is_newer(now, frm):
+    if _newer(now, frm):
         return "overtaken"
     return None
 
