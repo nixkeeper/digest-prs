@@ -1,0 +1,101 @@
+{
+  "alreadyIn": 62,
+  "blocksBot": 250,
+  "buckets": {
+    "bot": 2203,
+    "by-name": 4503,
+    "ci": 49,
+    "ci-bot": 120,
+    "cve": 20,
+    "docs": 869,
+    "drop": 47,
+    "haskell": 67,
+    "init": 3191,
+    "lib": 304,
+    "nixos": 2389,
+    "node": 11,
+    "python": 1937,
+    "tiny": 3993,
+    "treewide": 113,
+    "update": 2971,
+    "version-only": 2328
+  },
+  "diffs": {
+    "known": 12196,
+    "pending": 0,
+    "readNow": 33
+  },
+  "format": 1,
+  "fullSweepAt": "2026-10-31T13:15:45+00:00",
+  "generatedAt": "2026-10-31T16:21:01+00:00",
+  "groups": {
+    "sameChange": 1,
+    "sameDiff": 39,
+    "samePackage": 164
+  },
+  "hydraFailing": 240,
+  "issues": {
+    "at": "2026-10-31T16:15:38+00:00",
+    "buildFailures": {
+      "builds": 162,
+      "failing": 57,
+      "markedBroken": 8,
+      "noJob": 116,
+      "notForHydra": 2,
+      "platformNotBuilt": 7,
+      "removed": 11,
+      "unfree": 30,
+      "variant": 94,
+      "waiting": 8
+    },
+    "count": 9787,
+    "updateRequests": {
+      "done": 22,
+      "notFound": 19,
+      "notVersion": 6,
+      "open": 103,
+      "partly": 16
+    },
+    "updateRequestsTheBotReaches": 88
+  },
+  "mergeBot": {
+    "eligible": 972,
+    "ready": 958
+  },
+  "merged": {
+    "at": "2026-10-31T16:15:38+00:00",
+    "count": 366,
+    "revision": "1c89083e451e891152365b799595cf7790a43325",
+    "since": "2026-10-30T06:21:25Z"
+  },
+  "prs": 12502,
+  "staging": {
+    "at": "2026-10-31T16:15:38+00:00",
+    "count": 532,
+    "since": "2026-10-08T00:00:00Z",
+    "stagingNext": {
+      "lastMerged": {
+        "cut": "2026-10-08T00:00:00Z",
+        "merged": "2026-10-16T19:04:23Z",
+        "n": 571813,
+        "open": false,
+        "title": "staging-next 2026-10-08"
+      },
+      "open": {
+        "cut": "2026-10-29T00:00:00Z",
+        "merged": null,
+        "n": 580394,
+        "open": true,
+        "title": "staging-next 2026-10-29"
+      }
+    }
+  },
+  "states": {
+    "downgrade": 147,
+    "overtaken": 65,
+    "preRelease": 18,
+    "snapshotToRelease": 82,
+    "superseded": 77
+  },
+  "sweep": "changed"
+}
