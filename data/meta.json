@@ -1,0 +1,95 @@
+{
+  "alreadyIn": 53,
+  "blocksBot": 255,
+  "buckets": {
+    "bot": 2155,
+    "by-name": 4544,
+    "ci": 56,
+    "ci-bot": 124,
+    "cve": 18,
+    "docs": 904,
+    "drop": 41,
+    "haskell": 67,
+    "init": 3205,
+    "lib": 309,
+    "nixos": 2431,
+    "node": 11,
+    "python": 1923,
+    "tiny": 3968,
+    "treewide": 114,
+    "update": 2910,
+    "version-only": 2284
+  },
+  "diffs": {
+    "known": 12252,
+    "pending": 0,
+    "readNow": 37
+  },
+  "format": 1,
+  "fullSweepAt": "2026-11-14T01:15:40+00:00",
+  "generatedAt": "2026-11-14T21:22:29+00:00",
+  "groups": {
+    "sameChange": 3,
+    "sameDiff": 39,
+    "samePackage": 155
+  },
+  "hydraFailing": 291,
+  "issues": {
+    "at": "2026-11-14T21:15:41+00:00",
+    "buildFailures": {
+      "builds": 170,
+      "failing": 47,
+      "markedBroken": 9,
+      "noJob": 117,
+      "notForHydra": 2,
+      "platformNotBuilt": 7,
+      "removed": 10,
+      "unfree": 30,
+      "variant": 93,
+      "waiting": 4
+    },
+    "count": 9904,
+    "updateRequests": {
+      "done": 24,
+      "notFound": 21,
+      "notVersion": 7,
+      "open": 106,
+      "partly": 16
+    },
+    "updateRequestsTheBotReaches": 87
+  },
+  "mergeBot": {
+    "eligible": 988,
+    "ready": 970
+  },
+  "merged": {
+    "at": "2026-11-14T21:15:41+00:00",
+    "count": 1430,
+    "revision": "d4f25a3e562008648d45bcf2d70bcc7422cad84e",
+    "since": "2026-11-11T08:42:49Z"
+  },
+  "prs": 12563,
+  "staging": {
+    "at": "2026-11-14T21:15:41+00:00",
+    "count": 351,
+    "since": "2026-11-02T11:40:44Z",
+    "stagingNext": {
+      "lastMerged": {
+        "cut": "2026-11-02T11:40:44Z",
+        "merged": "2026-11-02T13:26:17Z",
+        "n": 582199,
+        "open": false,
+        "title": "cocogitto: un-vendor libgit2 and libz, enable __structuredAttrs"
+      },
+      "open": null
+    }
+  },
+  "states": {
+    "downgrade": 150,
+    "overtaken": 54,
+    "preRelease": 18,
+    "snapshotToRelease": 84,
+    "superseded": 74
+  },
+  "sweep": "changed"
+}
