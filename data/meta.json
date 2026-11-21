@@ -1,0 +1,101 @@
+{
+  "alreadyIn": 61,
+  "blocksBot": 313,
+  "buckets": {
+    "bot": 2269,
+    "by-name": 4703,
+    "ci": 58,
+    "ci-bot": 126,
+    "cve": 20,
+    "docs": 910,
+    "drop": 38,
+    "haskell": 68,
+    "init": 3168,
+    "lib": 313,
+    "nixos": 2474,
+    "node": 10,
+    "python": 1953,
+    "tiny": 4137,
+    "treewide": 117,
+    "update": 3096,
+    "version-only": 2391
+  },
+  "diffs": {
+    "known": 12512,
+    "pending": 0,
+    "readNow": 14
+  },
+  "format": 1,
+  "fullSweepAt": "2026-11-21T04:15:39+00:00",
+  "generatedAt": "2026-11-21T15:45:44+00:00",
+  "groups": {
+    "sameChange": 3,
+    "sameDiff": 39,
+    "samePackage": 168
+  },
+  "hydraFailing": 271,
+  "issues": {
+    "at": "2026-11-21T15:40:46+00:00",
+    "buildFailures": {
+      "builds": 180,
+      "failing": 34,
+      "markedBroken": 9,
+      "noJob": 117,
+      "notForHydra": 2,
+      "platformNotBuilt": 7,
+      "removed": 12,
+      "unfree": 29,
+      "variant": 93,
+      "waiting": 5
+    },
+    "count": 9972,
+    "updateRequests": {
+      "done": 27,
+      "notFound": 17,
+      "notVersion": 7,
+      "open": 97,
+      "partly": 18
+    },
+    "updateRequestsTheBotReaches": 84
+  },
+  "mergeBot": {
+    "eligible": 1049,
+    "ready": 1029
+  },
+  "merged": {
+    "at": "2026-11-21T15:40:46+00:00",
+    "count": 92,
+    "revision": "2786a2a72088ecf32aea5b3ec52099e6a7cff78f",
+    "since": "2026-11-21T04:16:29Z"
+  },
+  "prs": 12824,
+  "staging": {
+    "at": "2026-11-21T15:40:46+00:00",
+    "count": 523,
+    "since": "2026-11-02T11:40:44Z",
+    "stagingNext": {
+      "lastMerged": {
+        "cut": "2026-11-02T11:40:44Z",
+        "merged": "2026-11-02T13:26:17Z",
+        "n": 582199,
+        "open": false,
+        "title": "cocogitto: un-vendor libgit2 and libz, enable __structuredAttrs"
+      },
+      "open": {
+        "cut": "2026-11-16T00:00:00Z",
+        "merged": null,
+        "n": 588926,
+        "open": true,
+        "title": "staging-next 2026-11-16"
+      }
+    }
+  },
+  "states": {
+    "downgrade": 151,
+    "overtaken": 64,
+    "preRelease": 18,
+    "snapshotToRelease": 82,
+    "superseded": 84
+  },
+  "sweep": "changed"
+}
