@@ -1,0 +1,95 @@
+{
+  "alreadyIn": 59,
+  "blocksBot": 264,
+  "buckets": {
+    "bot": 2469,
+    "by-name": 4790,
+    "ci": 59,
+    "ci-bot": 165,
+    "cve": 24,
+    "docs": 918,
+    "drop": 41,
+    "haskell": 69,
+    "init": 3196,
+    "lib": 313,
+    "nixos": 2479,
+    "node": 10,
+    "python": 2051,
+    "tiny": 4355,
+    "treewide": 115,
+    "update": 3256,
+    "version-only": 2573
+  },
+  "diffs": {
+    "known": 12748,
+    "pending": 0,
+    "readNow": 16
+  },
+  "format": 1,
+  "fullSweepAt": "2026-11-28T10:15:34+00:00",
+  "generatedAt": "2026-11-28T14:21:33+00:00",
+  "groups": {
+    "sameChange": 4,
+    "sameDiff": 39,
+    "samePackage": 168
+  },
+  "hydraFailing": 247,
+  "issues": {
+    "at": "2026-11-28T14:15:40+00:00",
+    "buildFailures": {
+      "builds": 174,
+      "failing": 32,
+      "markedBroken": 9,
+      "noJob": 113,
+      "notForHydra": 2,
+      "platformNotBuilt": 7,
+      "removed": 11,
+      "unfree": 30,
+      "variant": 94,
+      "waiting": 7
+    },
+    "count": 10035,
+    "updateRequests": {
+      "done": 28,
+      "notFound": 16,
+      "notVersion": 7,
+      "open": 91,
+      "partly": 19
+    },
+    "updateRequestsTheBotReaches": 80
+  },
+  "mergeBot": {
+    "eligible": 1147,
+    "ready": 1075
+  },
+  "merged": {
+    "at": "2026-11-28T14:15:40+00:00",
+    "count": 1069,
+    "revision": "58d0d3e9d527ca7263be6a45d1f86eacdc700dab",
+    "since": "2026-11-24T18:54:50Z"
+  },
+  "prs": 13054,
+  "staging": {
+    "at": "2026-11-28T14:15:40+00:00",
+    "count": 364,
+    "since": "2026-11-16T00:00:00Z",
+    "stagingNext": {
+      "lastMerged": {
+        "cut": "2026-11-16T00:00:00Z",
+        "merged": "2026-11-23T13:25:42Z",
+        "n": 588926,
+        "open": false,
+        "title": "staging-next 2026-11-16"
+      },
+      "open": null
+    }
+  },
+  "states": {
+    "downgrade": 153,
+    "overtaken": 59,
+    "preRelease": 18,
+    "snapshotToRelease": 82,
+    "superseded": 101
+  },
+  "sweep": "changed"
+}
